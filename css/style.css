@@ -1,0 +1,198 @@
+/* COPYRIGHT
+The Digital-7 font used in this project comes from http://www.styleseven.com/. The fonts is freeware for home using. For more information contact ms-7@styleseven.com.
+*/
+
+/* Box Model Hack */
+* {
+     box-sizing: border-box;
+}
+
+/* Clear fix hack */
+.clearfix:after {
+     content: ".";
+     display: block;
+     clear: both;
+     visibility: hidden;
+     line-height: 0;
+     height: 0;
+}
+
+.clear {
+	clear: both;
+}
+
+/******************************************
+/* BASE STYLES
+/*******************************************/
+
+body {
+     font-family: Verdana, Geneva, Tahoma, sans-serif;
+     font-size: 30px;
+     background: gainsboro;
+}
+
+@font-face {
+     font-family: "Digital-7";
+     src: url('../fonts/Digital-7.svg') format('svg'),
+          url('../fonts/Digital-7.ttf') format('truetype'),
+          url('../fonts/Digital-7.woff') format('woff');
+     font-weight: normal;
+     font-style: normal;
+}
+
+@font-face {
+     font-family: 'digital-7';
+     src: url('../fonts/digital-7.eot');
+     src: url('../fonts/digital-7.eot?#iefix') format('embedded-opentype'),
+          url('../fonts/digital-7.woff2') format('woff2');
+     font-weight: normal;
+     font-style: normal;
+   }
+   
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+
+.container {
+     margin: 0 auto;
+     width: fit-content;
+     margin-top: 70px;
+}
+
+.calculator {
+     width: 400px;
+     height: 600px;
+     padding: 30px;
+
+     display: flex;
+     flex-wrap: wrap;
+
+     background: rgba(52, 52, 56, 1);
+
+     border: solid black thin;
+     border-radius: 5px;
+
+     box-shadow: inset -1px -1px 10px 2px rgba(126, 125, 125, .6),
+                 0px 0px 0px 1px rgba(0, 0, 0, 1),
+                 0px 0px 0px 4px rgba(52, 52, 56, 1),
+                 3px 1px 0px 2px rgba(52, 52, 56, 1),
+                 4px 1px 0px 2px rgba(0, 0, 0, 1);
+     
+     animation: levitate 1.5s cubic-bezier(0.56, 0.11, 0.59, 0.84) alternate 6;
+}
+
+@keyframes levitate {
+     0% {
+          transform: translateY(0);
+     }
+
+     100% {
+          transform: translateY(-30px);
+     }     
+}
+
+.calculator::after {
+     content: '';
+
+     display: block;
+     width: 280px;
+     position: relative;
+     top: 20px;
+     left: 30px;
+
+     background-color: rgba(52, 52, 56, 1);
+     border-radius: 15px;
+     box-shadow: 0px 50px 10px 7px rgba(0, 0, 0, .3);
+
+     animation: shrink-shadow 1.5s cubic-bezier(0.56, 0.11, 0.59, 0.84) alternate 6;
+}
+
+@keyframes shrink-shadow {
+
+     100% {
+          width: 200px;
+          left: 60px;   
+          
+          box-shadow: 0 50px 10px 1px rgba(0, 0, 0, .1);
+     }
+}
+
+.calculator__screen { 
+     height: 100px;
+     margin-bottom: 20px;
+     padding: 5px;
+
+     flex: 1 0 100%;
+
+     background-clip: content-box;
+     background-image: linear-gradient(rgba(152, 161, 144, .5), rgba(152, 161, 144, .5)),
+                       linear-gradient(to right, rgba(150, 163, 149, 1), rgba(132, 159, 136, 1));
+
+     border-radius: 10px;
+
+     box-shadow: inset 0px -5px 3px rgba(0,0,0,.9),
+                 inset 0px 1px 1px rgba(0,0,0,1),
+                 inset 1px 0px 1px rgba(0,0,0,.9),
+                 -10px 0px 4px -45px rgba(52,52,56,1),
+                 0px 10px 4px rgba(44,44,46,.9),
+                 10px 0px 4px 1px rgba(62,62,67,1);
+
+     font-family: "Digital-7", sans-serif;
+     text-align: right;
+     font-size: 80px;
+}
+
+.calculator__keysbg {
+     height: 400px;
+     width: 100%;
+     padding: 7px;
+
+     display: flex;
+     flex-wrap: wrap;
+     gap: 1px 7px;
+     
+     background: rgba(52, 52, 56, 1);
+
+     border-radius: 7px;
+}
+
+
+.calculator button {
+     height: 18%;
+     flex: 1 0 23%;   
+     position: relative; 
+     padding: 0;
+
+     background: linear-gradient(200deg, rgba(48,50,52,.1), rgba(188,188,188,.05)), 
+                 linear-gradient(rgba(72, 72, 76, 1), rgba(72, 72, 76, 1)); 
+
+     border-radius:15px;
+     border-top: 1px solid rgba(82, 83, 85, .5);
+     border-left: 1px solid rgba(86, 86, 86, .5);
+     border-right: 2px solid rgba(36, 36, 36, 1);
+     border-bottom: 2px solid rgba(19, 18, 21, .5);
+
+     box-shadow: 2px 2px 4px 1px black,
+                 inset 2px 1px 4px 0 rgba(255, 255, 255, .2),
+                 inset -3px 2px 5px 0 rgba(0, 0, 0, .2);
+
+     color: white;
+     text-shadow: 1px 1px 7px black;
+}
+
+.calculator button:active {
+     border-right: 1px solid rgba(36, 36, 36, 1);
+     border-bottom: 1px solid rgba(19, 18, 21, 1);
+
+     box-shadow: 0px 0px 4px 2px black;
+}
+
+button.double-size {
+     flex: 10 0 20%;
+}
+
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/
+
