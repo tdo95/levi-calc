@@ -33,7 +33,7 @@ let calc = {
         // Limits length of stored value 
         if (calc[num].length < MAX_NUM_LENGTH) {
             // Ensures decimal isnt used twice
-            if (calc[num].includes('.') && calc.innerText === '.') return;
+            if (calc[num].includes('.') && this.innerText === '.') return;
             else {
                 calc[num] += this.innerText;
                 calc.display( calc[num] ); 
@@ -62,16 +62,20 @@ let calc = {
 
         let result = calc.operations[calc.operator]();
         
-        //Determines how long decimal place of result should be
-        let numOneDeceimalLength = () => calc.num1.split('.')[1] ? calc.num1.split('.')[1].length : 0
-        let numTwoDeceimalLength = () => calc.num2.split('.')[1] ? calc.num2.split('.')[1].length : 0
-        let longestDecimalLength = Math.max(numOneDeceimalLength(), numTwoDeceimalLength())
-        
         //Enables continuous calculation after an initial result has been achieved
         calc.reset();
         calc.num1 = result.toString()
-        calc.display(result.toFixed(longestDecimalLength)) //Displays correct floating point number
-        
+
+        let decimals = String(result).split('.')[1]
+        if (!decimals) decimals = 0;
+
+        //Displays correct floating point number
+        if (decimals.length > MAX_NUM_LENGTH) { 
+            //Rounds and removes any trailing zeros
+            let roundedFigure = String(result.toPrecision(MAX_NUM_LENGTH)).replace(/0+$/, "");
+            calc.display(roundedFigure)   
+        }
+        else calc.display(result)
     },
 
     reset() {
