@@ -61,7 +61,8 @@ body {
 }
 
 .calculator {
-     width: 400px;
+     max-width: 400px;
+     min-width: 300px;
      height: 600px;
      padding: 30px;
 
