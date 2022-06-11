@@ -1,4 +1,4 @@
-# TI00L-calculator ✨
+# Levi Calculator ✨
 TI-00L is a basic calculator that performs simple mathematic operations. It is customized with levitating feature for visual intrigue. The animation only lasts a few seconds on page load, then reverts back to its still state.
 ###
 ![floating calculator](https://github.com/tdo95/TI00L-calculator/blob/main/floating-calc.gif)
